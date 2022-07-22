@@ -268,9 +268,12 @@ const driverPoints = document.querySelector(".driver_points");
 let counter = 1;
 
 addBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (event) => {
     // initial value + 1
     // Increment points
+    const incrementPoints = event.target.parentElement.querySelector(
+      ".points_container p:first-child"
+    );
+    incrementPoints.textContent = +incrementPoints.textContent + 1;
   });
 });
-
