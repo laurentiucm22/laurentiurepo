@@ -264,8 +264,6 @@ const cardData = sortedData.map(
 
 // Event Listener on the Buttons
 const addBtn = document.querySelectorAll(".points_btn");
-const driverPoints = document.querySelector(".driver_points");
-let counter = 1;
 
 addBtn.forEach((btn) => {
   btn.addEventListener("click", (event) => {
