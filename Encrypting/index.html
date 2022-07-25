@@ -5,10 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./encrypt-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="test">for lols</div>
+    <div class="content">
+      <div class="wrapper">
+        <div class="card">
+          <h1>Cipher</h1>
+          <div class="input-container">
+            <p class="error"></p>
+            <label for="message"
+              >Enter your message here <span style="color: red">*</span></label
+            >
+            <input id="message" class="message" type="text" />
+
+            <label for="secred_code"
+              >Enter secret code <span style="color: red">*</span></label
+            >
+            <input id="secred_code" class="secred_code" type="text" />
+
+            <div class="btn-container">
+              <button type="button" class="encrypt">Encrypt</button>
+              <button type="button" class="decrypt">Decrypt</button>
+            </div>
+          </div>
+
+          <div class="result">
+            <label for="result_textare" class="result-msg"
+              >Your encrypted message</label
+            >
+            <textarea id="result_textarea"></textarea>
+            <button type="button" class="copy-btn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>

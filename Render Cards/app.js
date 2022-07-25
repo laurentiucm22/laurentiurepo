@@ -267,7 +267,6 @@ const addBtn = document.querySelectorAll(".points_btn");
 
 addBtn.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    // initial value + 1
     // Increment points
     const incrementPoints = event.target.parentElement.querySelector(
       ".points_container p:first-child"

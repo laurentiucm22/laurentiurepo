@@ -1,0 +1,128 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #131313;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  width: 600px;
+  padding: 40px 35px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.card {
+  width: 600px;
+  background: grey;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: rgb(83, 16, 83);
+  padding: 2rem 0;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.error {
+  color: red;
+  font-weight: 500;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+.input-container > label {
+  padding: 10px 0;
+  color: #fff;
+}
+
+label {
+  font-size: 18px;
+}
+input {
+  padding: 0.5em 0.5em;
+  font-size: 16px;
+}
+.btn-container {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 2px 0;
+}
+
+.btn-container > button {
+  transition: background 150ms ease-in;
+  background-color: rgb(114, 105, 105);
+  font-size: 18px;
+  width: 40%;
+  padding: 0.5rem;
+  border-radius: 7px;
+  color: white;
+  font-weight: 700;
+  border: none;
+  outline: none;
+}
+.btn-container > button:hover {
+  cursor: pointer;
+  background-color: rgb(63, 57, 57);
+  transition: background 150ms ease-in;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem 1.5rem;
+}
+
+.result > label {
+  padding: 10px 0;
+  color: #fff;
+}
+textarea {
+  font-size: 16px;
+  min-height: 100px;
+  padding: 8px;
+}
+
+.result > .copy-btn {
+  margin-top: 15px;
+  transition: background 150ms ease-in;
+  background-color: rgb(114, 105, 105);
+  font-size: 18px;
+  width: 40%;
+  padding: 0.5rem;
+  border-radius: 7px;
+  color: white;
+  font-weight: 700;
+  border: none;
+  outline: none;
+}
+
+.result > button:hover {
+  cursor: pointer;
+  background-color: rgb(63, 57, 57);
+  transition: background 150ms ease-in;
+}
