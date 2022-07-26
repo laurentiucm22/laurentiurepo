@@ -66,11 +66,13 @@ function encyptMessage(message, scrKey) {
     );
   });
   // prettier-ignore
-  for (let i = 0; i < result.length; i++) encryptedMsg.push(characters.at(result[i]));
-  let encryptedMsgStr = encryptedMsg.join("");
-  console.log(encryptedMsgStr);
+  for (let i = 0; i < result.length; i++) {
+    
+  }
+  console.log(encryptedMsg);
 }
 encyptMessage("ababab", "cdcdcd");
+
 // // Decrypt error logic and events
 // // prettier-ignore
 // const decryptBtn = document.querySelector(".decrypt").addEventListener("click", () => {

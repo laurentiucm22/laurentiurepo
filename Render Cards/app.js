@@ -10,7 +10,10 @@ const root = document.querySelector("#root");
 
 // Rendering the data
 const cardData = sortedData.map(
-  ({ firstName, lastName, points, team, number, image, country }, index) => {
+  (
+    { firstName, lastName, points, team, number, image, country, hex },
+    index
+  ) => {
     const container = document.createElement("div");
     container.innerHTML = `
     <div class="container">

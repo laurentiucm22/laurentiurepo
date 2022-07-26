@@ -1,41 +1,40 @@
 const makeUser = function () {
+  let result = [];
   return {
-    action: "",
     jump: function () {
       /**/
-      this.action += "jumping";
+      result.push("jumping");
       return this;
     },
     speak: function () {
       /**/
-      this.action += "speaking";
+      result.push("speaking");
       return this;
     },
     run: function () {
       /**/
-      this.action += "running";
+      result.push("running");
       return this;
     },
     swim: function () {
       /**/
-      this.action += "swiming";
+      result.push("swiming");
       return this;
     },
     sleep: function () {
-      /**/
-      this.action += "sleeping";
-      return this;
+      result.push("sleeping");
+      /**/ return this;
     },
     exec: function () {
       /**/
-      this.action;
-      return this;
+      if (result.length == 0) {
+        result.push("");
+        console.log(result.join(""));
+      }
+      result.join(", ");
     },
   };
 };
-const user = new makeUser();
+const user = makeUser();
 // user.sleep().swim().speak().jump().swim().sleep().run().run().exec();
-
-console.log(
-  user.sleep().swim().speak().jump().swim().sleep().run().run().exec()
-);
+user.sleep().swim().speak().jump().swim().sleep().run().run().exec();
