@@ -27,14 +27,13 @@ const makeUser = function () {
     },
     exec: function () {
       /**/
-      if (result.length == 0) {
+      if (result.length === 0) {
         result.push("");
-        console.log(result.join(""));
       }
       result.join(", ");
+      console.log(result);
     },
   };
 };
 const user = makeUser();
-// user.sleep().swim().speak().jump().swim().sleep().run().run().exec();
 user.sleep().swim().speak().jump().swim().sleep().run().run().exec();
