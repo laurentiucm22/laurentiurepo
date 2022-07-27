@@ -66,9 +66,6 @@ function encyptMessage(message, scrKey) {
     );
   });
   // prettier-ignore
-  for (let i = 0; i < result.length; i++) {
-    
-  }
   console.log(encryptedMsg);
 }
 encyptMessage("ababab", "cdcdcd");
