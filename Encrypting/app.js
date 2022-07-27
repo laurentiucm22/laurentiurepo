@@ -54,53 +54,42 @@ const encrytBtn = document.querySelector(".encrypt").addEventListener("click", (
 //   textArea.innerHTML = text;
 // }
 
-function encyptMessage(message, scrKey) {
-  const splitMessage = message.split("");
-  const splitKey = scrKey.split("");
-  let encryptedMsg = [];
-
-  const result = splitMessage.map((el, idx) => {
-    return (
-      // prettier-ignore
-      characters.indexOf(el.toUpperCase()) + characters.indexOf(splitKey[idx].toUpperCase())
-    );
-  });
-  // prettier-ignore
-  console.log(encryptedMsg);
-}
-encyptMessage("ababab", "cdcdcd");
-
-// // Decrypt error logic and events
-// // prettier-ignore
-// const decryptBtn = document.querySelector(".decrypt").addEventListener("click", () => {
-//   let messageContent = message.value;
-//   let secredCodeContent = secredCode.value;
-
-//   if(messageContent && secredCodeContent) {
-//     resultMsg.textContent = "Your decrypted message:"
-//   } else {
-//     if (messageContent.length <= 0 && secredCodeContent.length <= 0) {
-//       return error.textContent = "All fields are required!";
-//     }
-//     if (messageContent && secredCodeContent.length <= 0) {
-//       return error.textContent = "Please entere the secred key!";
-//     }
-//     if (secredCodeContent && messageContent.length <= 0) {
-//       return error.textContent = "Please entere your message!";
-//     }
-//   }
-// });
-
-// function decryptMessage(message, scrKey) {
+// function encyptMessage(message, scrKey) {
 //   const splitMessage = message.split("");
 //   const splitKey = scrKey.split("");
 
-//   const result = splitKey.map((elem, idx) => {
+//   const result = splitMessage.map((el, idx) => {
 //     return (
 //       // prettier-ignore
-//       characters.indexOf(elem.toUpperCase()) + characters.indexOf(scrKey[idx].toUpperCase())
+//       characters.indexOf(el.toUpperCase()) + characters.indexOf(splitKey[idx].toUpperCase())
 //     );
 //   });
-//   console.log(result);
+//   // prettier-ignore
+//   console.log(encryptedMsg);
 // }
-// decryptMessage("abcabc", "accdca");
+// encyptMessage("ababab", "cdcdcd");
+
+function encyptMessage(message, scrKey) {
+  let splitedMessage = message.split("");
+  let splitedKey = scrKey.split("");
+
+  let newMessage = [];
+
+  const indexSum = splitedMessage.map((el, index) => {
+    return (
+      // prettier-ignore
+      characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index].toUpperCase())
+    );
+  });
+
+  for (let i = 0; i < indexSum.length; i++) {
+    newMessage.push(characters[indexSum[i]]);
+  }
+  let result = newMessage.join("");
+
+  textArea.textContent = result;
+  console.log(result);
+
+  // const indexSum = msgIndex + keyIndex;
+}
+// encyptMessage("abcabc", "defdef");
