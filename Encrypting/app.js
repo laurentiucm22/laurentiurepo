@@ -30,66 +30,47 @@ const encrytBtn = document.querySelector(".encrypt").addEventListener("click", (
     encyptMessage(messageContent, secredCodeContent);
   });
 
-// function encyptMessage(message, scrKey) {
-//   const splitMessage = message.split("");
-//   const splitKey = scrKey.split("");
-//   const result = splitKey.map((el, idx) => {
-//     // prettier-ignore
-//     return characters.indexOf(el.toUpperCase()) + characters.indexOf(splitMessage[idx].toUpperCase());
-//   });
-//   for (
-//     let i = splitMessage.length - splitKey.length;
-//     i < splitMessage.length;
-//     i++
-//   ) {
-//     result.push(
-//       characters.indexOf(splitMessage[i].toUpperCase()) +
-//         characters.indexOf(splitKey[splitKey.length - 1].toUpperCase())
-//     );
-//   }
-//   let text = "";
-//   for (let i = 0; i < result.length; i++) {
-//     text += characters[result[i]];
-//   }
-//   textArea.innerHTML = text;
-// }
-
-// function encyptMessage(message, scrKey) {
-//   const splitMessage = message.split("");
-//   const splitKey = scrKey.split("");
-
-//   const result = splitMessage.map((el, idx) => {
-//     return (
-//       // prettier-ignore
-//       characters.indexOf(el.toUpperCase()) + characters.indexOf(splitKey[idx].toUpperCase())
-//     );
-//   });
-//   // prettier-ignore
-//   console.log(encryptedMsg);
-// }
-// encyptMessage("ababab", "cdcdcd");
-
 function encyptMessage(message, scrKey) {
   let splitedMessage = message.split("");
   let splitedKey = scrKey.split("");
 
   let newMessage = [];
 
-  const indexSum = splitedMessage.map((el, index) => {
-    return (
-      // prettier-ignore
-      characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index].toUpperCase())
-    );
-  });
+  if (splitedMessage.length === splitedKey.length) {
+    const indexSum = splitedMessage.map((el, index) => {
+      return (
+        // prettier-ignore
+        characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index].toUpperCase())
+      );
+    });
+    console.log(indexSum);
 
-  for (let i = 0; i < indexSum.length; i++) {
-    newMessage.push(characters[indexSum[i]]);
+    for (let i = 0; i < indexSum.length; i++) {
+      newMessage.push(characters[indexSum[i]]);
+    }
+    let result = newMessage.join("");
+
+    textArea.textContent = result;
   }
-  let result = newMessage.join("");
 
-  textArea.textContent = result;
-  console.log(result);
+  if (splitedMessage.length > splitedKey.length) {
+    // find the index of the msg and key
 
-  // const indexSum = msgIndex + keyIndex;
+    let keyIdx = splitedKey.map((el) => {
+      return characters.indexOf(el.toUpperCase());
+    });
+    // when the length is bigger then the length of the key increment the key characters and concatenate them to it
+    let addToKey = keyIdx.map((el) => {
+      return el + 1;
+    });
+
+    let shortKeyResult = [...keyIdx, ...addToKey];
+
+    for (let i = 0; i < shortKeyResult.length; i++) {
+      newMessage.push(characters[shortKeyResult[i]]);
+    }
+
+    let shortResult = newMessage.join("");
+    textArea.textContent = shortResult;
+  }
 }
-// encyptMessage("abcabc", "defdef");
