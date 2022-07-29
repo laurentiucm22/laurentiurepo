@@ -43,7 +43,6 @@ function encyptMessage(message, scrKey) {
         characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index].toUpperCase())
       );
     });
-    console.log(indexSum);
 
     for (let i = 0; i < indexSum.length; i++) {
       newMessage.push(characters[indexSum[i]]);
@@ -56,15 +55,20 @@ function encyptMessage(message, scrKey) {
   if (splitedMessage.length > splitedKey.length) {
     // find the index of the msg and key
 
-    let keyIdx = splitedKey.map((el) => {
-      return characters.indexOf(el.toUpperCase());
+    let keyIdx = splitedKey.map((el, index) => {
+      return (
+        // prettier-ignore
+        characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedMessage[index].toUpperCase())
+      );
     });
+    console.log(keyIdx);
     // when the length is bigger then the length of the key increment the key characters and concatenate them to it
-    let addToKey = keyIdx.map((el) => {
+    let newArr = keyIdx.map((el) => {
       return el + 1;
     });
 
-    let shortKeyResult = [...keyIdx, ...addToKey];
+    let shortKeyResult = [...keyIdx, ...newArr];
+    console.log(shortKeyResult);
 
     for (let i = 0; i < shortKeyResult.length; i++) {
       newMessage.push(characters[shortKeyResult[i]]);
@@ -74,3 +78,4 @@ function encyptMessage(message, scrKey) {
     textArea.textContent = shortResult;
   }
 }
+// encyptMessage("abcabcabc", "defdef");
