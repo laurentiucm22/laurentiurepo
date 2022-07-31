@@ -5,6 +5,7 @@ const secredCode = document.querySelector(".secred_code");
 const resultMsg = document.querySelector(".result-msg");
 const error = document.querySelector(".error");
 const textArea = document.querySelector("#result_textarea");
+const copyBtn = document.querySelector("#copyBtn");
 
 // Ecrypt logic and events
 // prettier-ignore
@@ -40,7 +41,7 @@ function encyptMessage(message, scrKey) {
     const indexSum = splitedMessage.map((el, index) => {
       return (
         // prettier-ignore
-        characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index].toUpperCase())
+        (characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index].toUpperCase())) % characters.length
       );
     });
 
@@ -55,27 +56,29 @@ function encyptMessage(message, scrKey) {
   if (splitedMessage.length > splitedKey.length) {
     // find the index of the msg and key
 
-    let keyIdx = splitedKey.map((el, index) => {
+    let keyIdx = splitedMessage.map((el, index) => {
+      console.log("Index", index);
+      console.log("Mod", index % splitedKey.length);
+      console.log("Length", splitedKey.length);
       return (
         // prettier-ignore
-        characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedMessage[index].toUpperCase())
+        (characters.indexOf(el.toUpperCase()) + characters.indexOf(splitedKey[index % splitedKey.length].toUpperCase())) % characters.length
       );
     });
-    console.log(keyIdx);
-    // when the length is bigger then the length of the key increment the key characters and concatenate them to it
-    let newArr = keyIdx.map((el) => {
-      return el + 1;
-    });
 
-    let shortKeyResult = [...keyIdx, ...newArr];
-    console.log(shortKeyResult);
+    let encrypted = "";
 
-    for (let i = 0; i < shortKeyResult.length; i++) {
-      newMessage.push(characters[shortKeyResult[i]]);
+    for (let i = 0; i < keyIdx.length; i++) {
+      encrypted = encrypted + characters[keyIdx[i]];
+
+      console.log(characters[keyIdx[i]]);
     }
-
-    let shortResult = newMessage.join("");
-    textArea.textContent = shortResult;
+    textArea.textContent = encrypted;
   }
 }
-// encyptMessage("abcabcabc", "defdef");
+
+// Copy btn logic
+copyBtn.addEventListener("click", function () {
+  textArea.select();
+  document.execCommand("copy");
+});
