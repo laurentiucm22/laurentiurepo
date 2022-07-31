@@ -106,7 +106,7 @@ function decryptMessage(message, scrKey) {
   let splitedMessage = message.split("");
   let splitedKey = scrKey.split("");
 
-  let decriptedMsgResult = [];
+  let decryptedMsgResult = [];
 
   if (splitedMessage.length === splitedKey.length) {
     const revMsg = splitedMessage.map((el, index) => {
@@ -116,12 +116,28 @@ function decryptMessage(message, scrKey) {
       );
     });
     for (let i = 0; i < splitedMessage.length; i++) {
-      decriptedMsgResult.push(characters[revMsg[i]]);
+      decryptedMsgResult.push(characters[revMsg[i]]);
     }
 
-    let result = decriptedMsgResult.join("");
+    let result = decryptedMsgResult.join("");
 
     textArea.textContent = result;
+  }
+
+  if (splitedMessage.length > splitedKey.length) {
+    const keyIdx = splitedMessage.map((el, index) => {
+      // prettier-ignore
+      return (characters.indexOf(el.toUpperCase()) - characters.indexOf(splitedKey[index % splitedKey.length].toUpperCase())) % characters.length
+    });
+
+    let decrypted = "";
+
+    for (let i = 0; i < keyIdx.length; i++) {
+      decrypted = decrypted + characters[keyIdx[i]];
+
+      console.log(characters[keyIdx[i]]);
+    }
+    textArea.textContent = decrypted;
   }
 }
 
