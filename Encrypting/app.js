@@ -22,7 +22,7 @@ const encrytBtn = document.querySelector(".encrypt").addEventListener("click", (
         return error.textContent = "All fields are required!";
       }
       if (messageContent && secredCodeContent.length <= 0) {
-        return error.textContent = "Please entere the secred key!";
+        return error.textContent = "Please entere secred key!";
       }
       if (secredCodeContent && messageContent.length <= 0) {
         return error.textContent = "Please entere your message!";
@@ -77,8 +77,56 @@ function encyptMessage(message, scrKey) {
   }
 }
 
+// Decrypt logic and events
+
+// prettier-ignore
+const decryptBtn = document.querySelector(".decrypt").addEventListener("click", () => {
+  let messageContent = message.value;
+  let secredCodeContent = secredCode.value;
+
+    // Error logic
+  if (messageContent && secredCodeContent) {
+    resultMsg.textContent = "Your decrypted message"
+
+  } else {
+    if (messageContent.length <= 0 && secredCodeContent.length <= 0) {
+      return error.textContent = "All fields are required!";
+    }
+    if (messageContent && secredCodeContent.length <= 0) {
+      return error.textContent = "Please entere secred key!";
+    }
+    if (secredCodeContent && messageContent.length <= 0) {
+      return error.textContent = "Please entere your message!";
+    }
+  }
+  decryptMessage(messageContent, secredCodeContent);
+})
+
+function decryptMessage(message, scrKey) {
+  let splitedMessage = message.split("");
+  let splitedKey = scrKey.split("");
+
+  let decriptedMsgResult = [];
+
+  if (splitedMessage.length === splitedKey.length) {
+    const revMsg = splitedMessage.map((el, index) => {
+      return (
+        // prettier-ignore
+        characters.indexOf(el.toUpperCase()) - (characters.indexOf(splitedKey[index].toUpperCase()) % characters.length)
+      );
+    });
+    for (let i = 0; i < splitedMessage.length; i++) {
+      decriptedMsgResult.push(characters[revMsg[i]]);
+    }
+
+    let result = decriptedMsgResult.join("");
+
+    textArea.textContent = result;
+  }
+}
+
 // Copy btn logic
-copyBtn.addEventListener("click", function () {
+copyBtn.addEventListener("click", () => {
   textArea.select();
   document.execCommand("copy");
 });
